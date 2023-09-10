@@ -1,7 +1,7 @@
 Algoritmo appDeViajes
 	// Definir Variables
-	Definir kmsRecorrido, litrosDeCombustible, consumoVehiculo, horasRecorridas, tiempoDeViaje, minutosRecorridos, costoDeViaje, precioDeViaje, valorDeCombustible, costoXHora, costoConductor, costoCombustible Como Real
-	Definir OP, tipoDeCarga Como Entero
+	Definir kmsRecorrido, litrosDeCombustible, consumoVehiculo, horasRecorridas, tiempoDeViaje, costoDeViaje, precioDeViaje, valorDeCombustible, costoXHora, costoConductor, costoCombustible Como Real
+	Definir OP, tipoDeCarga, velocidad Como Entero
 	Definir moto, auto, flete, transporte Como Caracter
 	litrosDeCombustible <- 0
 	consumoVehiculo <- 0
@@ -44,43 +44,42 @@ Algoritmo appDeViajes
 			Escribir "Ingrese la de cantidad de paquetes"
 			Leer nroDeBultos
 			Si nroDeBultos <= 25
-				transporte <-""
+				transporte <-"flete"
 			FinSi
 	FinSegun
-	Si transporte = "auto" Entonces
+			
+Si transporte = "auto" Entonces
 		consumoVehiculo <- 10
+		costoXHora <- 1500
+		velocidad <- 50
 		Sino
 	FinSi
 	Si transporte = "moto" Entonces
 		consumoVehiculo <- 33.33
+		costoXHora<- 2500
+		velocidad <- 35
 	FinSi
 	Si transporte = "flete" Entonces
 		consumoVehiculo<- 3.5
+		costoXHora <- 4000
+		velocidad <- 23
 	FinSi
 	Escribir "La carga irá en " transporte
 	//Costos
 	Escribir "Ingrese valor del litro de Cobustible"
 	Leer valorDeCombustible
-	Escribir "Ingrese el costo por hora de trabajo del chofer"
-	Leer costoXHora
 	
 	//Cotización
 	Escribir "Ingrese los Kilometros del Recorrido"
 	leer kmsRecorrido
-	Escribir "Sección ingreso de tiempo de viaje se le solicitaran Horas y minutos por separado recuerde que el tiempo puede variar según el tipo de vehiculo"
-	Escribir "Ingrese Horas del viaje"
-	Leer horasRecorridas
-	Escribir "Ingrese Minutos del Viaje"
-	Leer minutosRecorridos
 	
-	tiempoDeViaje <-(horasRecorridas+(minutosRecorridos/60))
-	costoConductor <-costoXHora*tiempoDeViaje
+	tiempoDeViaje <-(kmsRecorrido/velocidad)
 	litrosDeCombustible <- kmsRecorrido/consumoVehiculo
 	costoCombustible <- litrosDeCombustible*valorDeCombustible
+	costoConductor<- (tiempoDeViaje*costoXHora)
 	costoDeViaje <- costoCombustible+costoConductor
 	precioDeViaje <- costoDeViaje*1.8
 	
-	Repetir
 		// mostrar menu
 		Escribir "Tipo de Cliente"
 		Escribir "   1. Consumidor Final:"
@@ -105,8 +104,6 @@ Algoritmo appDeViajes
 		Si (op>4) Entonces
 			Escribir "Opción no válida"
 		FinSi
-	Hasta Que op=4
 	Escribir "No se olvide de pasarle al cliente la cotización"
-
 	//Mensaje Final
 FinAlgoritmo
