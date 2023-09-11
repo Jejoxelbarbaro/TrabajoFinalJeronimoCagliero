@@ -98,7 +98,7 @@ Si transporte = "auto" Entonces
 			Escribir "El precio de Viaje es de $", precioDeViaje, " + IVA (", IVA ")"
 		FinSi
 		Si (op=3) Entonces	
-			precioDeViaje <- precioDeViaje*0.15
+			precioDeViaje <- precioDeViaje*0.85
 			IVA <- precioDeViaje*0.21
 			Escribir "El precio de Viaje es de $", precioDeViaje, " + IVA (", IVA ")"
 		FinSi
