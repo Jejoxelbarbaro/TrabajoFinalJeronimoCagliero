@@ -6,7 +6,14 @@ Algoritmo appDeViajes
 	litrosDeCombustible <- 0
 	consumoVehiculo <- 0
 	tiempoDeViaje <- 0
-	//Datos
+	valorDeCombustible <-430
+	
+	//Recorrido
+	Escribir "Ingrese los Kilometros del Recorrido"
+	leer kmsRecorrido
+	Si kmsRecorrido>0 Y kmsRecorrido < 80
+	
+	//Carga para selección de Movil
 	Escribir "Tipo de Carga"
 	Escribir "   1. Pequeña: hasta 110 cm de alguno de sus lados y 15 Kg de peso"
 	Escribir "   2. Mediana: Desde 110 cm hasta 230 cm de alguno de sus lados y 300 Kg de peso"
@@ -65,14 +72,8 @@ Si transporte = "auto" Entonces
 		velocidad <- 23
 	FinSi
 	Escribir "La carga irá en " transporte
-	//Costos
-	Escribir "Ingrese valor del litro de Cobustible"
-	Leer valorDeCombustible
 	
 	//Cotización
-	Escribir "Ingrese los Kilometros del Recorrido"
-	leer kmsRecorrido
-	
 	tiempoDeViaje <-(kmsRecorrido/velocidad)
 	litrosDeCombustible <- kmsRecorrido/consumoVehiculo
 	costoCombustible <- litrosDeCombustible*valorDeCombustible
@@ -80,7 +81,7 @@ Si transporte = "auto" Entonces
 	costoDeViaje <- costoCombustible+costoConductor
 	precioDeViaje <- costoDeViaje*1.8
 	
-		// mostrar menu
+		// mostrar menu cliente
 		Escribir "Tipo de Cliente"
 		Escribir "   1. Consumidor Final:"
 		Escribir "   2. Empresa"
@@ -104,6 +105,11 @@ Si transporte = "auto" Entonces
 		Si (op>4) Entonces
 			Escribir "Opción no válida"
 		FinSi
-	Escribir "No se olvide de pasarle al cliente la cotización"
-	//Mensaje Final
+		//Mensaje Final
+		Escribir "No se olvide de pasarle al cliente la cotización"
+	Sino 
+		Escribir "La distancia del recorrido es superior a la permitida"
+	FinSi
+
+
 FinAlgoritmo
